@@ -1,10 +1,8 @@
-const {name, sum} = require('./new')
+const validator = require('validator')
 const getNotes = require('./notes')
-
-console.log(name);
-
-console.log(sum(1,4));
 
 const msg = getNotes()
 
 console.log(msg);
+
+console.log(validator.isEmail('asda@gasc.com'));
