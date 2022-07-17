@@ -2,7 +2,7 @@ const validator = require('validator')
 const chalk = require('chalk')
 const yargs = require('yargs')
 
-const {getNotes, addNote, removeNote} = require('./notes')
+const {getNotes, addNote, removeNote, listNotes} = require('./notes')
 const { argv } = require('yargs')
 
 const msg = getNotes()
@@ -45,7 +45,7 @@ yargs.command({
 yargs.command({
   command: 'list',
   describe: 'list notes',
-  handler: () => console.log('list notes')
+  handler: () => console.log(listNotes())
 })
 
 

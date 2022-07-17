@@ -32,6 +32,12 @@ const removeNote = (title) => {
   }
 }
 
+const listNotes = () => {
+  const notes = loadNotes()
+
+  notes.map(note => console.log(note.title))
+}
+
 const loadNotes = () => {
   try {
     const jsonBuffer = fs.readFileSync('notes.json')
@@ -47,6 +53,6 @@ const saveNotes = (notes) => {
     return fs.writeFileSync('notes.json', notesJSON)
 }
 
-module.exports = {getNotes, addNote, removeNote}
+module.exports = {getNotes, addNote, removeNote, listNotes}
 
 
