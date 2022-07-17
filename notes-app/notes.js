@@ -1,7 +1,5 @@
 const fs = require('fs')
 
-const getNotes = () => 'Your notes...'
-
 const addNote = (title, body) => {
   const notes = loadNotes()
 
@@ -65,6 +63,6 @@ const saveNotes = (notes) => {
     return fs.writeFileSync('notes.json', notesJSON)
 }
 
-module.exports = {getNotes, addNote, removeNote, listNotes, readNote}
+module.exports = { addNote, removeNote, listNotes, readNote }
 
 
