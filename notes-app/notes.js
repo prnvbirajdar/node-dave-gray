@@ -5,9 +5,9 @@ const getNotes = () => 'Your notes...'
 const addNote = (title, body) => {
   const notes = loadNotes()
 
-  const repeatName = notes.filter(note => note.title === title)
+  const repeatName = notes.find(note => note.title === title)
 
-  if(repeatName.length === 0){
+  if(!repeatName){
     notes.push({
       title: title,
       body: body
@@ -38,6 +38,18 @@ const listNotes = () => {
   notes.map(note => console.log(note.title))
 }
 
+const readNote = title => {
+  try {
+    const notes = loadNotes()
+    const correctNote = notes.find(note => note.title === title)
+
+    console.log('title', correctNote.title, 'body', correctNote.body );
+    
+  } catch (error) {
+    console.log('no such note exists');
+  }
+}
+
 const loadNotes = () => {
   try {
     const jsonBuffer = fs.readFileSync('notes.json')
@@ -53,6 +65,6 @@ const saveNotes = (notes) => {
     return fs.writeFileSync('notes.json', notesJSON)
 }
 
-module.exports = {getNotes, addNote, removeNote, listNotes}
+module.exports = {getNotes, addNote, removeNote, listNotes, readNote}
 
 
